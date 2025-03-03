@@ -81,6 +81,7 @@
         <commons-fileupload.version>1.5</commons-fileupload.version>
         <graalvmjs.version>22.3.1</graalvmjs.version>
         <httpclient.version>4.5.14</httpclient.version>
+        <kafka.version>3.8.1</kafka.version>
         <!-- frontend -->
         <frontend-maven-plugin.version>1.12.1</frontend-maven-plugin.version>
         <node.version>v20.8.1</node.version>

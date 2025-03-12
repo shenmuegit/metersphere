@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.12</version>
+        <version>3.3.9</version>
         <relativePath/>
     </parent>
 
@@ -36,8 +36,9 @@
         <mybatis-starter.version>3.0.3</mybatis-starter.version>
         <reflections.version>0.10.2</reflections.version>
         <bcprov-jdk15on.version>1.70</bcprov-jdk15on.version>
-        <commons-io.version>2.11.0</commons-io.version>
+        <commons-io.version>2.14.0</commons-io.version>
         <commons-text.version>1.10.0</commons-text.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
         <xstream.version>1.4.20</xstream.version>
         <xmlbeans.version>3.1.0</xmlbeans.version>
         <swagger-parser.version>2.1.12</swagger-parser.version>
@@ -46,7 +47,7 @@
         <jsoup.version>1.15.3</jsoup.version>
         <commonmark.version>0.19.0</commonmark.version>
         <commons-compress.version>1.21</commons-compress.version>
-        <htmlcleaner.version>2.26</htmlcleaner.version>
+        <htmlcleaner.version>2.29</htmlcleaner.version>
         <xmindjbehaveplugin.version>0.8</xmindjbehaveplugin.version>
         <metersphere-plugin-core.version>2.0</metersphere-plugin-core.version>
         <plexus.version>3.0.24</plexus.version>
@@ -65,11 +66,11 @@
         <jmeter-plugins-webdriver.version>4.10.0</jmeter-plugins-webdriver.version>
         <opentelemetry.version>1.26.0</opentelemetry.version>
         <oracle-database.version>19.7.0.0</oracle-database.version>
-        <zookeeper.version>3.8.0</zookeeper.version>
+        <zookeeper.version>3.8.3</zookeeper.version>
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
         <jmeter-plugins-dubbo.version>2.7.17</jmeter-plugins-dubbo.version>
         <hessian-lite.version>3.2.13</hessian-lite.version>
-        <avro.version>1.11.3</avro.version>
+        <avro.version>1.11.4</avro.version>
         <dec.version>0.1.2</dec.version>
         <dingtalk-sdk.version>2.0.0</dingtalk-sdk.version>
         <org-json.version>20231013</org-json.version>

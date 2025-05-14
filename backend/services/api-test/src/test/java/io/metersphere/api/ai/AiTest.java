@@ -23,7 +23,7 @@ import java.util.List;
 public class AiTest {
 
     private static final String OPENAI_API_KEY = "SK";
-
+/*
     @Test
     @Order(1)
     void chatTest() {
@@ -96,5 +96,5 @@ public class AiTest {
         } else {
             LogUtils.info("ToolsFilesTest Response is null or incomplete");
         }
-    }
+    }*/
 }

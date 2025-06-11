@@ -30,7 +30,7 @@ jobs:
         run: rm -rf ~/.m2/repository/io/metersphere/monitoring-engine
 
       - name: Build with Maven - other
-        run: mvn -T 7 -B package -DskipAntRunForJenkins --file pom.xml -pl '!frontend'
+        run: mvn -B package -DskipAntRunForJenkins --file pom.xml -pl '!frontend'
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         with:

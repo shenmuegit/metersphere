@@ -60,7 +60,7 @@ public class SystemAIConfigService {
         }
 
         // 检查AppKey变更
-        boolean hasKeyChanged = !isAddOperation && validateAppKey(aiModelSourceDTO, id);
+        validateAppKey(aiModelSourceDTO, id);
 
         // 创建并填充模型对象
         var aiModelSource = new AiModelSource();
@@ -73,7 +73,7 @@ public class SystemAIConfigService {
             aiModelSourceMapper.insert(aiModelSource);
         } else {
             // 更新时如果开启状态且Key变更，需要验证模型
-            if (aiModelSource.getStatus() && hasKeyChanged) {
+            if (aiModelSource.getStatus()) {
                 validModel(aiModelSourceDTO);
             }
             aiModelSourceMapper.updateByPrimaryKey(aiModelSource);

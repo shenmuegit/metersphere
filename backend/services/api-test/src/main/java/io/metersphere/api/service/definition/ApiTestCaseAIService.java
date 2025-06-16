@@ -46,6 +46,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Service
@@ -101,6 +103,7 @@ public class ApiTestCaseAIService {
 
         // 保证生成内容不包含额外内容
         Pattern pattern = Pattern.compile("apiCaseStart(.*)apiCaseEnd", Pattern.DOTALL);
+        assert content != null;
         Matcher matcher = pattern.matcher(content);
 
         if (matcher.find()) {

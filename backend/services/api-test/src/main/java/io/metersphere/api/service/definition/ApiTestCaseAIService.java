@@ -96,7 +96,18 @@ public class ApiTestCaseAIService {
                 .prompt(prompt)
                 .build();
 
-        return TextCleaner.cleanMdTitle(aiChatBaseService.chatWithMemory(aiChatOption).content());
+        String content = aiChatBaseService.chatWithMemory(aiChatOption)
+                .content();
+
+        // 保证生成内容不包含额外内容
+        Pattern pattern = Pattern.compile("apiCaseStart(.*)apiCaseEnd", Pattern.DOTALL);
+        Matcher matcher = pattern.matcher(content);
+
+        if (matcher.find()) {
+            content = matcher.group(0).trim();
+        }
+
+        return TextCleaner.cleanMdTitle(content);
     }
 
     private ApiCaseAIRenderConfig getApiCaseAIRenderConfig(String userId) {

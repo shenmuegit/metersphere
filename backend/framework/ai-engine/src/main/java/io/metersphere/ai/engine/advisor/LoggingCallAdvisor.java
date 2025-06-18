@@ -1,5 +1,6 @@
 package io.metersphere.ai.engine.advisor;
 
+import io.metersphere.sdk.util.JSON;
 import io.metersphere.sdk.util.LogUtils;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.ai.chat.client.ChatClientRequest;
@@ -21,10 +22,13 @@ public class LoggingCallAdvisor implements CallAdvisor {
      * @return 返回处理后的响应流
      */
     @Override
-    public @NotNull ChatClientResponse adviseCall(@NotNull ChatClientRequest advisedRequest, CallAdvisorChain chain) {
+    public @NotNull ChatClientResponse adviseCall(@NotNull ChatClientRequest advisedRequest, @NotNull CallAdvisorChain chain) {
         // 记录请求日志
-        LogUtils.info("Request: {}", advisedRequest);
-
+        try {
+            LogUtils.info("Request: {}", JSON.toFormatJSONString(advisedRequest));
+        } catch (Exception e) {
+            LogUtils.error("Failed to log request", e);
+        }
         // 继续执行下一个拦截器并返回响应
         return chain.nextCall(advisedRequest);
     }

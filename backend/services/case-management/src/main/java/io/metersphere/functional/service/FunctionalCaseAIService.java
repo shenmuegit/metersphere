@@ -198,6 +198,7 @@ public class FunctionalCaseAIService {
 
     /**
      * 解析用户提示词模板
+     *
      * @param userId 用户ID
      * @return 提示词
      */
@@ -249,11 +250,11 @@ public class FunctionalCaseAIService {
             scenes.add("`异常`");
         }
         variables.put("scenes", scenes.isEmpty() ? "`正常`, `异常`" : String.join(",", scenes));
-		if (StringUtils.isNotBlank(designConfig.getScenarioMethodDescription())) {
-			variables.put("sceneTips", designConfig.getScenarioMethodDescription());
-		} else {
-			variables.put("sceneTips", "");
-		}
+        if (StringUtils.isNotBlank(designConfig.getScenarioMethodDescription())) {
+            variables.put("sceneTips", designConfig.getScenarioMethodDescription());
+        } else {
+            variables.put("sceneTips", "");
+        }
 
         Message systemMessage = promptTemplate.createMessage(variables);
         return systemMessage.toString();
@@ -342,10 +343,9 @@ public class FunctionalCaseAIService {
             caseCustomField.setCaseId(id);
             caseCustomField.setFieldId(v.getFieldId());
 
-            if (StringUtils.equalsIgnoreCase(v.getType(), CustomFieldType.MEMBER.name()) && v.getDefaultValue()!=null && v.getDefaultValue().toString().contains("CREATE_USER")) {
+            if (StringUtils.equalsIgnoreCase(v.getType(), CustomFieldType.MEMBER.name()) && v.getDefaultValue() != null && v.getDefaultValue().toString().contains("CREATE_USER")) {
                 caseCustomField.setValue(userId);
-            } else
-            if (StringUtils.equalsIgnoreCase(v.getType(), CustomFieldType.MULTIPLE_MEMBER.name()) && v.getDefaultValue()!=null && v.getDefaultValue().toString().contains("CREATE_USER")) {
+            } else if (StringUtils.equalsIgnoreCase(v.getType(), CustomFieldType.MULTIPLE_MEMBER.name()) && v.getDefaultValue() != null && v.getDefaultValue().toString().contains("CREATE_USER")) {
                 caseCustomField.setValue(JSON.toJSONString(List.of(userId)));
             } else {
                 caseCustomField.setValue(v.getDefaultValue() == null ? StringUtils.EMPTY : v.getDefaultValue().toString());

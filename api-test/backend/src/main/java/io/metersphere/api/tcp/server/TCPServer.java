@@ -1,9 +1,13 @@
 package io.metersphere.api.tcp.server;
 
 import io.metersphere.commons.utils.LogUtil;
+import io.metersphere.commons.utils.NamedThreadFactory;
 
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
+
 
 /**
  * @author song.tianyang
@@ -14,6 +18,9 @@ public class TCPServer implements Runnable {
     private ServerSocket serverSocket;
 
     private TCPService server;
+
+    private final ThreadPoolExecutor threadPool = (ThreadPoolExecutor) Executors
+            .newFixedThreadPool(10, new NamedThreadFactory("tcp-mock-server"));
 
     public TCPServer(int port) {
         this.port = port;
@@ -26,7 +33,7 @@ public class TCPServer implements Runnable {
             if (!this.serverSocket.isClosed()) {
                 Socket socket = this.serverSocket.accept();
                 server = new TCPService(socket, port);
-                server.run();
+                threadPool.execute(server);
             }
         } while (!this.serverSocket.isClosed());
     }

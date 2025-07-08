@@ -16,7 +16,7 @@ import java.io.*;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 
-public class TCPService {
+public class TCPService implements Runnable{
     private final Socket socket;
     private final int port;
 
@@ -50,7 +50,7 @@ public class TCPService {
         }
     }
 
-    public void run() throws IOException {
+    public void runMock() throws IOException {
         try (InputStream is = socket.getInputStream();
              OutputStream os = socket.getOutputStream()) {
             String message = this.read(is);
@@ -130,6 +130,15 @@ public class TCPService {
     public void close() throws IOException {
         if (socket != null) {
             socket.close();
+        }
+    }
+
+    @Override
+    public void run() {
+        try {
+            this.runMock();
+        } catch (Exception e) {
+            LogUtil.error(e);
         }
     }
 }
